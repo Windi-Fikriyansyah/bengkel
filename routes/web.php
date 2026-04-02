@@ -7,6 +7,7 @@ use App\Http\Controllers\StokMasukController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,7 +37,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/transaksi/data', [TransaksiController::class, 'getData'])->name('transaksi.data');
     Route::post('/transaksi/{id}/pembayaran', [TransaksiController::class, 'updatePayment'])->name('transaksi.pembayaran');
+    Route::get('/transaksi/print/{id}', [TransaksiController::class, 'printNota'])->name('transaksi.print');
     Route::resource('transaksi', TransaksiController::class);
+
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
 
 require __DIR__.'/auth.php';

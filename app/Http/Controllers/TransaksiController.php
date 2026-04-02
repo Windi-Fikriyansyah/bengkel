@@ -192,6 +192,17 @@ class TransaksiController extends Controller
         return response()->json(['success' => 'Pembayaran berhasil diselesaikan!']);
     }
 
+    public function printNota($id)
+    {
+        $userId = Auth::id();
+        $transaksi = DB::table('transaksi')->where('id', $id)->where('user_id', $userId)->first();
+        if (!$transaksi) return abort(404);
+
+        $details = DB::table('transaksi_detail')->where('transaksi_id', $id)->get();
+
+        return view('transaksi.nota', compact('transaksi', 'details'));
+    }
+
     public function destroy($id)
     {
         return DB::transaction(function () use ($id) {

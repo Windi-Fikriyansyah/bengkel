@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        
+
         // Counts for Checklist
         $layananCount = DB::table('layanan')->where('user_id', $userId)->count();
         $sparepartCount = DB::table('spareparts')->where('user_id', $userId)->count();
@@ -25,14 +25,19 @@ class DashboardController extends Controller
             ->whereDate('created_at', now()->today())
             ->sum('total_harga');
         $customerCount = DB::table('pelanggan')->where('user_id', $userId)->count();
-        $lowStockCount = DB::table('spareparts')->where('user_id', $userId)->where('stok', '<', 5)->count();
+        $lowStockCount = DB::table('spareparts')->where('user_id', $userId)->where('stok', '<', 10)->count();
 
         $isChecklistComplete = ($layananCount > 0 && $sparepartCount > 0 && $transaksiCount > 0);
 
         return view('dashboard', compact(
-            'layananCount', 'sparepartCount', 'transaksiCount', 
-            'totalIncome', 'todayIncome', 'customerCount', 
-            'lowStockCount', 'isChecklistComplete'
+            'layananCount',
+            'sparepartCount',
+            'transaksiCount',
+            'totalIncome',
+            'todayIncome',
+            'customerCount',
+            'lowStockCount',
+            'isChecklistComplete'
         ));
     }
 }

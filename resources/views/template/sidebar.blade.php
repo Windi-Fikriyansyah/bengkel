@@ -7,13 +7,10 @@
         </a>
     </li>
 
-    <!-- Transaksi -->
-    <li class="menu-item {{ request()->is('transaksi*') ? 'active' : '' }}">
-        <a href="{{route('transaksi.index')}}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-cart"></i>
-            <div data-i18n="Transaksi">Transaksi / Nota</div>
-        </a>
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Data Master</span>
     </li>
+
 
     <!-- Pelanggan -->
     <li class="menu-item {{ request()->is('pelanggan*') ? 'active' : '' }}">
@@ -39,6 +36,16 @@
         </a>
     </li>
 
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Transaksi</span>
+    </li>
+    <!-- Transaksi -->
+    <li class="menu-item {{ request()->is('transaksi*') ? 'active' : '' }}">
+        <a href="{{route('transaksi.index')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-cart"></i>
+            <div data-i18n="Transaksi">Transaksi / Nota</div>
+        </a>
+    </li>
     <!-- Stok Masuk -->
     <li class="menu-item {{ request()->is('stok-masuk*') ? 'active' : '' }}">
         <a href="{{route('stok-masuk.index')}}" class="menu-link">
@@ -47,6 +54,14 @@
         </a>
     </li>
 
-
-
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Laporan</span>
+    </li>
+    <!-- Laporan -->
+    <li class="menu-item {{ request()->is('laporan*') ? 'active' : '' }}">
+        <a href="{{route('laporan.index')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-file"></i>
+            <div data-i18n="Laporan">Laporan</div>
+        </a>
+    </li>
 </ul>
