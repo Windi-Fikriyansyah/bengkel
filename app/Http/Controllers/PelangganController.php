@@ -67,8 +67,13 @@ class PelangganController extends Controller
     {
         $pelanggan = DB::table('pelanggan')->where('id', $id)->where('user_id', Auth::id())->first();
         
-        // Placeholder untuk history service (nanti akan ditarik dari tabel transaksi)
-        $history = []; 
+        if (!$pelanggan) return response()->json(['error' => 'Data tidak ditemukan'], 404);
+
+        $history = DB::table('transaksi')
+            ->where('pelanggan_id', $id)
+            ->where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->get();
         
         return response()->json([
             'pelanggan' => $pelanggan,

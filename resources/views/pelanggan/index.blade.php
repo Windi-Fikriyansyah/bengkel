@@ -98,8 +98,8 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>Tanggal</th>
-                                    <th>Layanan/Sparepart</th>
-                                    <th>Total</th>
+                                    <th>#ID Nota</th>
+                                    <th>Total Transaksi</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -168,7 +168,20 @@
                     $('#modalHistory').modal('show');
 
                     if (data.history.length > 0) {
-                        // Logic untuk menampilkan history (saat tabel transaksi sudah ada)
+                        var html = '';
+                        data.history.forEach(function (item) {
+                            var statusBadge = item.status == 'lunas'
+                                ? '<span class="badge bg-label-success">Lunas</span>'
+                                : '<span class="badge bg-label-danger">Belum Lunas</span>';
+
+                            html += `<tr>
+                                <td>${new Date(item.created_at).toLocaleDateString('id-ID')}</td>
+                                <td>#${item.id}</td>
+                                <td>Rp ${new Number(item.total_harga).toLocaleString('id-ID')}</td>
+                                <td>${statusBadge}</td>
+                            </tr>`;
+                        });
+                        $('#historyTableBody').html(html);
                     } else {
                         $('#noHistoryMessage').removeClass('d-none');
                     }
