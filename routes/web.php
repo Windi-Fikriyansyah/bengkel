@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('transaksi', TransaksiController::class);
 
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/harga', function () {
+        return view('pricing.index');
+    })->name('pricing.index');
 });
 
 require __DIR__.'/auth.php';

@@ -64,4 +64,22 @@
             <div data-i18n="Laporan">Laporan</div>
         </a>
     </li>
+
+    <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Lainnya</span>
+    </li>
+    <!-- Harga -->
+    <li class="menu-item {{ request()->is('harga*') ? 'active' : '' }}">
+        <a href="{{route('pricing.index')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
+            <div data-i18n="Harga">Harga</div>
+        </a>
+    </li>
+    <!-- Pengaturan Akun -->
+    <li class="menu-item {{ request()->is('profile*') ? 'active' : '' }}">
+        <a href="{{route('profile.edit')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-cog"></i>
+            <div data-i18n="Pengaturan">Pengaturan Akun</div>
+        </a>
+    </li>
 </ul>

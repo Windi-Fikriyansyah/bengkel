@@ -26,6 +26,9 @@ class ProfileUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
+            'nama_bengkel' => ['required', 'string', 'max:255'],
+            'alamat_bengkel' => ['required', 'string'],
+            'no_whatsapp' => ['required', 'string', 'max:20'],
         ];
     }
 }

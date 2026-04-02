@@ -49,6 +49,15 @@
                     </li>
 
                     <li>
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                            <i class="bx bx-cog me-2"></i>
+                            <span class="align-middle">Pengaturan Akun</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a class="dropdown-item" href="{{ route('logout') }}"
