@@ -7,6 +7,14 @@
         </a>
     </li>
 
+    <!-- Transaksi -->
+    <li class="menu-item {{ request()->is('transaksi*') ? 'active' : '' }}">
+        <a href="{{route('transaksi.index')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-cart"></i>
+            <div data-i18n="Transaksi">Transaksi / Nota</div>
+        </a>
+    </li>
+
     <!-- Pelanggan -->
     <li class="menu-item {{ request()->is('pelanggan*') ? 'active' : '' }}">
         <a href="{{route('pelanggan.index')}}" class="menu-link">
